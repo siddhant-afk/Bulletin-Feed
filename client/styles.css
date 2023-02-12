@@ -25,7 +25,7 @@ body{
     text-decoration : underline;
 }
 
-.recommendations{
+.card-section{
     background: rgba( 22, 21, 21, 0.25 );
 
 backdrop-filter: blur( 4px );
@@ -42,3 +42,4 @@ padding:5%;
     height: 8vw;
     object-fit: cover;
 }
+
