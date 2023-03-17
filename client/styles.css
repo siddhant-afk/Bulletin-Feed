@@ -4,6 +4,17 @@ body{
     color : white;
 }
 
+
+
+.modal-content{
+    background: #151515;
+
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+}
 .navbar{
 
     padding-top : 2.5%;
@@ -13,6 +24,7 @@ body{
     font-weight : 700;
     
 }
+
 
 .logout{
     margin-right : 2%;
@@ -46,4 +58,26 @@ padding:5%;
 
 footer{
     padding : 2%;
+}
+
+
+.heading{
+    margin-top : 10%;
+    font-size : 3.4rem;
+    font-weight : 700;
+}
+
+.login-form{
+
+    width : 50%;
+    margin-left : 25%;
+}
+
+.form-control{
+    margin : auto;
+    width : 60%;
+}
+
+label{
+    margin-left : 0;
 }
