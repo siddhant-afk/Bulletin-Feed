@@ -7,13 +7,36 @@ body{
 
 
 .modal-content{
-    background: #151515;
+    background: rgba( 22, 21, 21, 1 );
 
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
+   
+  
     border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border: 1px solid rgb(66, 64, 64);
 
+}
+
+
+input[type=checkbox]{
+
+    display: none;
+}
+
+label{
+    padding : 1.2%;
+    margin-right: 3%;
+    border : 1px solid gray;
+    border-radius: 10px;
+}
+
+input[type=checkbox]:checked + label{
+
+    background-color: white;
+    color: black;
+}
+.btn-close{
+
+    background-color:white;
 }
 .navbar{
 
