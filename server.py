@@ -11,7 +11,12 @@ class Preference(db.Model):
     topics = db.Column(db.String())
     location = db.Column(db.String())
 
-@app.route("/")
+
+@app.route("/login")
+def login():
+    return render_template('login.html')
+
+@app.route("/feed")
 def home():
     return render_template('feed.html')
 
