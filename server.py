@@ -1,8 +1,13 @@
 from flask import Flask,render_template
 from flask_sqlalchemy import SQLAlchemy
+from forms import RegisterForm
+
+
+
 app = Flask(__name__)
 app.app_context().push()
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+app.config['SECRET_KEY'] = 'a049b89bf64d21fbd8e22a44'
 db = SQLAlchemy(app)
 
 
@@ -18,11 +23,10 @@ class User(db.Model):
         return self.email_address
     
 
-
-
-
-    
-
+@app.route("/register")
+def register_page():
+    form = RegisterForm()
+    return render_template('register.html', form=form )
 
 @app.route("/login")
 def login():
