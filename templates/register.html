@@ -46,7 +46,9 @@
         {{form.password1(class="form-control", placeholder="Enter Password")}} <br> <br>
         {{form.password2(class="form-control", placeholder="Confirm Password")}} <br> <br>
 
-        {{form.submit(class="btn btn-outline-light")}}
+        {{form.submit(class="btn btn-outline-light")}} <br> <br>
+
+        <span class="text-center">Already have an account? <a href="{{url_for('login')}}">Login!</a></span>
        </form>
    </div>
     

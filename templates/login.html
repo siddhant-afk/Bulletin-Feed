@@ -15,23 +15,30 @@
 </head>
 <body>
 
+    
+
     <h1 class="heading text-center">
         Bulletin Feed
     </h1>
 
    <div class="container">
 
-    <form action="" class="text-center login-form mt-5 card-section">
+    <form method="POST" class="text-center login-form mt-5 card-section">
         <h3 class="text-center">Login</h3> <br>
-       
-            <input type="email" name="email" class="form-control" placeholder="Email Address"> <br> <br>
+       {{ form.hidden_tag() }}
+       {{ form.email_address(class="form-control", placeholder="Email Address")}} <br> <br>
        
         
       
-        <input type="password" name="password" id="" class="form-control" placeholder="Password"> <br> <br>
+        {{ form.password(class="form-control", placeholder="Password")}} <br> <br>
+        {{form.submit(class="btn btn-outline-light")}} <br> <br>
 
-        <button type="submit" class="btn btn-outline-light">Login</button>
+       <span class="text-danger">{{ error}}</span>  <br>
+
+        <span class="text-center">Do not have an account? <a href="{{url_for('register_page')}}">Sign Up!</a></span>
     </form>
+    
+ 
    </div>
     
 </body>
