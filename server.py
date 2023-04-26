@@ -39,6 +39,52 @@ def home():
 
     return render_template('feed.html', articles = response["articles"],tech_news = tech_news,sports_news=sports_news, local_news=local_news)
 
+@app.route("/feed/tech")
+@login_required
+def technology():
+    tech = f"https://newsapi.org/v2/top-headlines?country={location}&category=technology&language={language}&apiKey={API_KEY}"
+    tech_news  =requests.get(tech).json()['articles']
+    return render_template('tech.html',articles = tech_news)
+
+@app.route("/feed/business")
+@login_required
+def business():
+    url = f"https://newsapi.org/v2/top-headlines?country={location}&category=business&language={language}&apiKey={API_KEY}"
+    news  =requests.get(url).json()['articles']
+    return render_template('business.html',articles = news)
+
+
+@app.route("/feed/sports")
+@login_required
+def sports():
+    url =f"https://newsapi.org/v2/top-headlines?country={location}&category=sports&language={language}&apiKey={API_KEY}"
+    news  =requests.get(url).json()['articles']
+    return render_template('sports.html',articles = news)
+
+
+
+@app.route("/feed/entertainment")
+@login_required
+def entertainment():
+    url = f"https://newsapi.org/v2/top-headlines?country={location}&category=entertainment&language={language}&apiKey={API_KEY}"
+    news  =requests.get(url).json()['articles']
+    return render_template('entertainment.html',articles = news)
+
+
+@app.route("/feed/health")
+@login_required
+def health():
+    url = f"https://newsapi.org/v2/top-headlines?country={location}&category=health&language={language}&apiKey={API_KEY}"
+    news  =requests.get(url).json()['articles']
+    return render_template('health.html',articles = news)
+
+@app.route("/feed/science")
+@login_required
+def science():
+    url = f"https://newsapi.org/v2/top-headlines?country={location}&category=science&language={language}&apiKey={API_KEY}"
+    news  =requests.get(url).json()['articles']
+    return render_template('science.html',articles = news)
+
 
 @app.route("/register", methods = ['GET','POST'])
 def register_page():
@@ -67,7 +113,7 @@ def login():
         attempted_user = User.query.filter_by(email_address = form.email_address.data).first()
         if attempted_user and attempted_user.check_password(attempted_password = form.password.data):
             login_user(attempted_user)
-            flash("Successfully Logged In!")
+           
             return redirect(url_for('home'))
         else:
             error = "Wrong credentials. Please try again."
