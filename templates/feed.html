@@ -27,74 +27,61 @@
         </div>
         <div class="modal-body ">
           
-            <form action="" method="post" id="modal-form">
-            <div class="topics">
-                <h5>Pick Your Topics</h5> 
-                <input type="checkbox" name="Technology" id="tech" class="badge"> <label for="tech">Technology</label>
-                <input type="checkbox" name="Sports" id="sports" class="badge"> <label for="sports">Sports</label>
-                <input type="checkbox" name="Politics" id="pol" class="badge"> <label for="pol">Politics</label>
-                <input type="checkbox" name="Economy" id="econ" class="badge"> <label for="econ">Economy</label>
-                <input type="checkbox" name="Health" id="health" class="badge"> <label for="health">Health</label>
-                <input type="checkbox" name="Entertainment" id="ent" class="badge"> <label for="ent">Entertainment</label>
-                <input type="checkbox" name="Education" id="edu" class="badge"> <label for="edu">Education</label>
-                <input type="checkbox" name="Environment" id="env" class="badge"> <label for="env">Environment</label>
-            </div>
+            <form action="{{url_for('preferences')}}" method="post" id="modal-form">
+            
+                <div class="location mt-5">
+                    <h5>Select Language</h5>
+    
+                    <!--- India states -->
+    <select id="lang" name="language" class="form-control ms-0 mt-4">
+        <option value="">Language</option>
+        <option value="ar">Arabic</option>
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+        <option value="it">Italian</option>
+        <option value="nl">Dutch</option>
+        <option value="pt">Portuguese</option>
+        <option value="zh">Chinese</option>
+        <option value="ru">Russian</option>      
+    </select>
+    
+    
+                </div>
 
             <div class="location mt-5">
                 <h5>Select Location</h5>
 
                 <!--- India states -->
-<select id="country-state" name="country-state" class="form-control ms-0 mt-4">
-    <option value="">Select state</option>
-    <option value="AN">Andaman and Nicobar Islands</option>
-    <option value="AP">Andhra Pradesh</option>
-    <option value="AR">Arunachal Pradesh</option>
-    <option value="AS">Assam</option>
-    <option value="BR">Bihar</option>
-    <option value="CH">Chandigarh</option>
-    <option value="CT">Chhattisgarh</option>
-    <option value="DN">Dadra and Nagar Haveli</option>
-    <option value="DD">Daman and Diu</option>
-    <option value="DL">Delhi</option>
-    <option value="GA">Goa</option>
-    <option value="GJ">Gujarat</option>
-    <option value="HR">Haryana</option>
-    <option value="HP">Himachal Pradesh</option>
-    <option value="JK">Jammu and Kashmir</option>
-    <option value="JH">Jharkhand</option>
-    <option value="KA">Karnataka</option>
-    <option value="KL">Kerala</option>
-    <option value="LA">Ladakh</option>
-    <option value="LD">Lakshadweep</option>
-    <option value="MP">Madhya Pradesh</option>
-    <option value="MH">Maharashtra</option>
-    <option value="MN">Manipur</option>
-    <option value="ML">Meghalaya</option>
-    <option value="MZ">Mizoram</option>
-    <option value="NL">Nagaland</option>
-    <option value="OR">Odisha</option>
-    <option value="PY">Puducherry</option>
-    <option value="PB">Punjab</option>
-    <option value="RJ">Rajasthan</option>
-    <option value="SK">Sikkim</option>
-    <option value="TN">Tamil Nadu</option>
-    <option value="TG">Telangana</option>
-    <option value="TR">Tripura</option>
-    <option value="UP">Uttar Pradesh</option>
-    <option value="UT">Uttarakhand</option>
-    <option value="WB">West Bengal</option>
-</select>
+<select id="country-state" name="country" class="form-control ms-0 mt-4">
+    <option value="">Select Country</option>
+    <option value="us">United States(US)</option>
+    <option value="gb">United Kingdom (UK)</option>
+    <option value="au">Australia</option>
+    <option value="in">India</option>
+    <option value="ca">Canada</option>
+    <option value="de">Germany</option>
+    <option value="fr">France</option>
+    <option value="it">Italy</option>
+    <option value="es">Spain</option>
+    <option value="cn">China</option>
+    <option value="jp">Japan</option>
+    <option value="kr">South Korea</option>
+</select> <br> <br>
 
 
             </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                <input type="submit" class="btn btn-dark" value="Save Changes">
+              </div>
             </form>
 
 
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-dark">Save changes</button>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -126,58 +113,24 @@
     <div class="row">
 
         <div class="col-md-8 left">
-            <h3>Recommended for you</h3> <br>
+            <h3>Top Headlines</h3> <br>
             <section class="card-section">
+                {% for article in articles[:5] %}
                <div class="headline row">
+                
                 <div class="col-md-8">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
+                  <a href="{{ article.url }}" class="text-white" target="_blank"> {{ article.title }}</a>  
                 </div>
                <div class="col-md-4">
-                <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
+                <img src="{{ article.urlToImage }}" alt="" class=" headline-img">
                </div> 
                 <hr class="mt-3">
                </div>
+
+               {% endfor %}
                
 
-               <div class="headline row">
-                <div class="col-md-8">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-                </div>
-               <div class="col-md-4">
-                <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-               </div> 
-                <hr class="mt-3">
-               </div>
-
-               <div class="headline row">
-                <div class="col-md-8">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-                </div>
-               <div class="col-md-4">
-                <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-               </div> 
-                <hr class="mt-3">
-               </div>
-
-               <div class="headline row">
-                <div class="col-md-8">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-                </div>
-               <div class="col-md-4">
-                <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-               </div> 
-                <hr class="mt-3">
-               </div>
-
-               <div class="headline row">
-                <div class="col-md-8">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-                </div>
-               <div class="col-md-4">
-                <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-               </div> 
-                <hr class="mt-3">
-               </div>
+               
             </section>
             
             
@@ -190,22 +143,19 @@
                 
                 <h4>Technology</h4> <br>
                 <div class="headline row card-section">
+
+                    {% for tech in tech_news[:2] %}
                     <div class="col-md-8">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
+                      <a href="{{tech.url}}" target="_blank" class="text-white">{{ tech.title }}</a>  
                     </div>
                    <div class="col-md-4">
-                    <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
+                    <img src="{{ tech.urlToImage }}" alt="" class=" headline-img">
                    </div> 
                     <hr class="mt-3">
 
-                    <div class="col-md-8">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-                    </div>
-                   <div class="col-md-4">
-                    <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-                   </div> 
-                    <hr class="mt-3">
+                    {% endfor %}
 
+                    
 
                    </div>
 
@@ -216,21 +166,17 @@
                 
                 <h4>Sports</h4> <br>
                 <div class="headline row card-section">
+                   
+                    {% for sports in sports_news[:2] %}
                     <div class="col-md-8">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
+                      <a href="{{ sports.url }}" target="_blank" class="text-white">{{ sports.title }}</a>  
                     </div>
                    <div class="col-md-4">
-                    <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
+                    <img src="{{ sports.urlToImage }}" alt="" class=" headline-img">
                    </div> 
                     <hr class="mt-3">
 
-                    <div class="col-md-8">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-                    </div>
-                   <div class="col-md-4">
-                    <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-                   </div> 
-                    <hr class="mt-3">
+                    {% endfor %}
 
                     
                    </div>
@@ -251,101 +197,50 @@
     <div class="card-section row">
 
         <div class="col-md-4">
+            {% for local in local_news[:3] %}
             <div class="headline row ">
-                <div class="col-md-8">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-                </div>
-               <div class="col-md-4">
-                <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-               </div> 
-                <hr class="mt-3">
-        </div>
-
-        <div class="headline row ">
             <div class="col-md-8">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
+               <a href="{{local.url}}" class="text-white"> {{local.title}}</a> 
             </div>
-           <div class="col-md-4">
-            <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-           </div> 
+            <div class="col-md-4">
+            <img src="{{ local.urlToImage }}" alt="" class=" headline-img">
+            </div> 
             <hr class="mt-3">
-    </div>
-
-    <div class="headline row ">
-        <div class="col-md-8">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-        </div>
-       <div class="col-md-4">
-        <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-       </div> 
-        <hr class="mt-3">
-</div>
+            </div>
+    
+            {% endfor %}
 
     </div>
 
     <div class="col-md-4">
+        {% for local in local_news[4:7] %}
         <div class="headline row ">
-            <div class="col-md-8">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-            </div>
-           <div class="col-md-4">
-            <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-           </div> 
-            <hr class="mt-3">
-    </div>
-
-    <div class="headline row ">
         <div class="col-md-8">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
+           <a href="{{local.url}}" class="text-white"> {{local.title}}</a> 
         </div>
-       <div class="col-md-4">
-        <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-       </div> 
+        <div class="col-md-4">
+        <img src="{{ local.urlToImage }}" alt="" class=" headline-img">
+        </div> 
         <hr class="mt-3">
-</div>
+        </div>
 
-<div class="headline row ">
-    <div class="col-md-8">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-    </div>
-   <div class="col-md-4">
-    <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-   </div> 
-    <hr class="mt-3">
-</div>
+        {% endfor %}
 
 </div>
 
 <div class="col-md-4">
+    {% for local in local_news[8:11] %}
     <div class="headline row ">
-        <div class="col-md-8">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-        </div>
-       <div class="col-md-4">
-        <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-       </div> 
-        <hr class="mt-3">
-</div>
-
-<div class="headline row ">
     <div class="col-md-8">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
+       <a href="{{local.url}}" class="text-white"> {{local.title}}</a>
     </div>
-   <div class="col-md-4">
-    <img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-   </div> 
+    <div class="col-md-4">
+    <img src="{{ local.urlToImage }}" alt="" class=" headline-img">
+    </div> 
     <hr class="mt-3">
-</div>
+    </div>
 
-<div class="headline row ">
-<div class="col-md-8">
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, mollitia!
-</div>
-<div class="col-md-4">
-<img src="{{ url_for('static' , filename = './Lionel-Messi-Argentina-2022-FIFA-World-Cup_(cropped).jpg' ) }}" alt="" class=" headline-img">
-</div> 
-<hr class="mt-3">
-</div>
+    {% endfor %}
 
 </div>
     
