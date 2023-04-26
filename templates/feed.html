@@ -89,7 +89,7 @@
 <!--------------------------------NAVBAR-----------------------------------------------> 
 <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
     <div class="container">
-      <a class="navbar-brand" href="#">Bulletin Feed</a>
+      <a class="navbar-brand" href="{{url_for('home')}}">Bulletin Feed</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -103,9 +103,38 @@
       
     </div>
   </nav>
+  
+  
 <!-------------X-------------------NAVBAR-------------------------X---------------------->
 
 <div class="container">
+    <hr style="color : white;">
+</div>
+
+<ul class="nav justify-content-center container" data-bs-theme="dark">
+    <li class="nav-item">
+      <a class="nav-link " aria-current="page" href="{{ url_for('technology')}}">Technology</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('sports')}}">Sports</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('business')}}">Business</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('entertainment')}}">Entertainment</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('health')}}">Health</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('science')}}">Science</a>
+      </li>
+  </ul>
+
+  <div class="container">
     <hr style="color : white;">
 </div>
 

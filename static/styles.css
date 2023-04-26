@@ -49,6 +49,7 @@ input[type=checkbox]:checked + label{
 .navbar-brand{
     font-size : 1.8rem;
     font-weight : 700;
+    color: antiquewhite;
     
 }
 
@@ -57,6 +58,11 @@ input[type=checkbox]:checked + label{
     margin-right : 2%;
    
     margin-bottom : 0;
+}
+
+.nav-link{
+
+    color: antiquewhite;
 }
 
 .nav-link:hover{
