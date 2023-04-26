@@ -11,8 +11,7 @@ class User(db.Model,UserMixin):
     id = db.Column(db.Integer(),primary_key=True)
     email_address = db.Column(db.String(length=50),nullable=False, unique=True)
     password_hash = db.Column(db.String(length=60),nullable = False)
-    topics = db.Column(db.String())
-    location = db.Column(db.String())
+    
 
 
     def __repr__(self):

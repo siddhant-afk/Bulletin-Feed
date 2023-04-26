@@ -23,11 +23,8 @@ def home():
 
     general= f"https://newsapi.org/v2/top-headlines?category=general&language={language}&apiKey={API_KEY}"
     tech = f"https://newsapi.org/v2/top-headlines?country={location}&category=technology&language={language}&apiKey={API_KEY}"
-    buiness = f"https://newsapi.org/v2/top-headlines?country={location}&category=business&language={language}&apiKey={API_KEY}"
     sports = f"https://newsapi.org/v2/top-headlines?country={location}&category=sports&language={language}&apiKey={API_KEY}"
-    entertainment = f"https://newsapi.org/v2/top-headlines?country={location}&category=entertainment&language={language}&apiKey={API_KEY}"
-    health = f"https://newsapi.org/v2/top-headlines?country={location}&category=health&language={language}&apiKey={API_KEY}"
-    science = f"https://newsapi.org/v2/top-headlines?country={location}&category=science&language={language}&apiKey={API_KEY}"
+    
     local = f"https://newsapi.org/v2/top-headlines?country={location}&language={language}&apiKey={API_KEY}"
 
     response = requests.get(general).json()
